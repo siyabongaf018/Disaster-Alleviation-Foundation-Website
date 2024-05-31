@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Statistic";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+
+<div class="b">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="PublicPage">|<span style="color:orange">|Active Disasters</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">|Sign in </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 style="color:orange">View Active Disaster With Allocation data</h2> <br />
+
+
+    <h3>@ViewData["AvailableAmount"]</h3>
+
+    <h3>@ViewData["TotalMonetaryDonation"]</h3>
+    <h3>@ViewData["TotalNumberOfGoodsDonation"]</h3>
+
+    <hr />
+    <center>
+
+        <h2>Active Disaster data </h2>
+        @{int i = 1;}
+        <table border="0" cellspacing="1" cellpadding="2" class="table table-hover table-striped" style="color:white">
+            <tr style="color:orange">
+                <th scope="col">#</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Location</th>
+                <th scope="col">Desciption</th>
+                <th scope="col">Required Aid</th>
+            </tr>
+            @foreach (var item in ViewBag.ActiveDisasters)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.startDate</td>
+                    <td>@item.endDate</td>
+                    <td>@item.location</td>
+                    <td>@item.descripion</td>
+                    <td>@item.requiredAid</td>
+                </tr>
+            }
+        </table>
+    </center>
+
+
+</div>

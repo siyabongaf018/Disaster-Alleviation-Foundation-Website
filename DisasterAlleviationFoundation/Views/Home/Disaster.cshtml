@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Disaster";
+}
+<div id="bg"></div>
+<div class="b">
+    <center>
+        <h3 class="DisasterHeader">Disaster details</h3>
+        <hr />
+        <br />
+        <h3>Enter details about the disaster</h3>
+        <form  asp-action="DisasterValidation" method="post" class="fm">
+
+
+            <div class="form-outline mb-4">
+                📆<label class="form-label">Start date</label>
+                <input type="date" name="startDate" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                📆<label class="form-label">End Date</label>
+                <input type="date" name="EndDate" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                📍<label class="form-label">Location of disaster</label>
+                <input type="text" name="Location" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                📝<label class="form-label">Description of disaster</label>
+                <textarea type="text" name="descriptionOfDisaster" class="form-control" required="" autofocus></textarea>
+            </div>
+            <div class="form-outline mb-4">
+                📝<label class="form-label">Specify requires aid:</label>
+                <textarea type="text" name="SpecifyRequiresAid" class="form-control" required="" autofocus></textarea>
+            </div>
+            <button class="btnL" type="submit">Submit</button>
+
+        </form>
+    </center>
+
+</div>

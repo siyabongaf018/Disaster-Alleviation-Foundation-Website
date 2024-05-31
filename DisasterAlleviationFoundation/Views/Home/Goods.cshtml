@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model DisasterAlleviationFoundation.Models.UserDetails
+@{
+    ViewData["Title"] = "Goods Donation";
+}
+<div id="bg"></div>
+<div class="b">
+
+    <center>
+        <h3 class="">Donations</h3>
+        <hr />
+        <br />
+        <h3>🔗🏠Goods Donation</h3>
+        <form asp-action="GoodsDonationValidation" method="post" class="fm">
+
+
+            <div class="form-outline mb-4">
+                💵<label class="form-label">Number Of Items</label>
+                <input type="number" value="1" min="0" max="1000000" step="1.00" name="NumberOfItems" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                📆<label class="form-label">Donaion date</label>
+                <input type="date" name="GoodsDonaionDate" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                <!-- drop down -->
+
+
+            </div>
+            <div class="form-outline mb-4">
+                @*ViewBag.CityList is holding all the cities values*@
+                @Html.DropDownListFor(model => model.selectededCategory, ViewBag.CityList as SelectList, "Select Categorys", new { @class = "form-control", @onChange = "SelectedValue(this)" })
+                @Html.ValidationMessageFor(model => model.selectededCategory, "", new { @class = "text-danger" })
+                <input type="hidden" name="CategoryID" class="form-control" id="myCategoryID" />
+            </div>
+            <div class="form-outline mb-4">
+                📝<label class="form-label">Description of Items</label>
+                <textarea type="text" name="descriptionOfItems" class="form-control" required="" autofocus></textarea>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"> Donate Anonymously</label><br>
+                <input type="checkbox" id="vehicle1" name="Anoinymous" value="1" style="height:30px;">
+            </div><br />
+           
+
+
+            <button class="btnL" type="submit">Submit</button>
+
+        </form>
+    </center>
+</div>
+
+<script>
+
+    //To get selected value an text of dropdownlist
+    function SelectedValue(ddlObject)
+    {
+        //Selected value of dropdownlist
+        var selectedValue = ddlObject.value;
+        //Selected text of dropdownlist
+        var selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;
+
+        document.getElementById("myCategoryID").value = selectedValue;
+
+        //alert popup with detail of seleceted value and text
+       // alert(" Selected Value: " + selectedValue+" -- "+"Selected Text: " + selectedText ) ;
+    }
+</script> 

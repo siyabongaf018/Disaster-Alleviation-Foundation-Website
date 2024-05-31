@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model DisasterAlleviationFoundation.Models.UserDetails
+@{
+    ViewData["Title"] = "Monetary Allocation";
+    Layout = "~/Views/Shared/_AllocationLayout.cshtml";
+}
+<div id="bg"></div>
+<div class="b">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="MonetaryAllocation">|<span style="color:orange">Monetary Allocation </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="GoodsAllocation">|Goods Allocation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="CapturePurchasedGoods">|Capture Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedMonetaryData">|Allocated Monetary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedGoodsData">|Allocated Goods</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewPurchasedGoods">|View Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">|Logout</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <h3 class="">Active Disaster Allocation</h3>
+        <hr />
+        <br />
+        <h3>💰Monetary Allocation</h3>
+        <p>@ViewData["AvailableAmount"]</p> 
+        <form asp-action="MonetaryAllocationValidation" method="post" class="fm">
+            <div class="form-outline mb-4">
+                <label class="form-label">Select Active Disaster</label>
+                @*ViewBag.CityList is holding all the cities values*@
+                @Html.DropDownListFor(model => model.selectededCategory, ViewBag.ActiveDisaster as SelectList, "Select Active Disaster", new { @class = "form-control", @onChange = "SelectedValue(this)" })
+                @Html.ValidationMessageFor(model => model.selectededCategory, "", new { @class = "text-danger" })
+                <input type="hidden" name="ActiveDisasterID" class="form-control" id="ActiveDisasterID" />
+            </div>
+
+            <div class="form-outline mb-4">
+                💵<label class="form-label">Amount</label>
+                <input type="number" value="1" min="0.00" max="10000.00" step="1.00" name="Amount" class="form-control" required="" autofocus />
+            </div>
+            <div class="form-outline mb-4">
+                📆<label class="form-label">Allocation date</label>
+                <input type="date" name="AllocationDate" class="form-control" required="" autofocus />
+            </div>
+
+
+
+
+            <button class="btnL" type="submit">Submit</button>
+
+        </form>
+    </center>
+
+
+
+</div>
+
+<script>
+
+    //To get selected value an text of dropdownlist
+    function SelectedValue(ddlObject)
+    {
+        //Selected value of dropdownlist
+        var selectedValue = ddlObject.value;
+        //Selected text of dropdownlist
+        var selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;
+
+        document.getElementById("ActiveDisasterID").value = selectedValue;
+
+        //alert popup with detail of seleceted value and text
+       // alert(" Selected Value: " + selectedValue+" -- "+"Selected Text: " + selectedText ) ;
+    }
+</script> 

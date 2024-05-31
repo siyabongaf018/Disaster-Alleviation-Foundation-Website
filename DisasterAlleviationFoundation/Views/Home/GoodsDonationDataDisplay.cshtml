@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using DisasterAlleviationFoundation.Models;
+@model IEnumerable<GoodsDonationDisplay>
+
+@{
+    ViewData["Title"] = "Disaster display";
+
+}
+
+<div id="bg"></div>
+<div class="b">
+    <h2 class="animHead">View all Disaster data</h2> <br />
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">|Monetary donation Table </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DisplayDisasterData">|Disaster Table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GoodsDonationDataDisplay">|<span style="color:orange">Goods Donation table</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h3>@ViewData["TotalNumberOfGoodsDonation"]</h3>
+    <center>
+
+        <h2>Goods Donation Data </h2>
+        @{int i = 1;}
+        <table border="0" cellspacing="1" cellpadding="2" class="table table-hover table-striped" style="color:white">
+            <tr style="color:orange">
+                <th scope="col">#</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Number Of Items</th>
+                <th scope="col">Donation Date</th>
+                <th scope="col">Desciption Of Items</th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.Category</td>
+                    <td>@item.NumberOfItems</td>
+                    <td>@item.DonationDate</td>
+                    <td>@item.Desciption</td>
+
+                </tr>
+            }
+        </table>
+    </center>
+
+
+</div>

@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<h2>Login</h2>
+<div id="bg"></div>
+<form asp-controller="Login" asp-action="ValidateRegistration" method="post">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="PublicPage">|Active Disasters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login"><span style="color:orange">|Sign in</span> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2>Register</h2>
+    <hr />
+    <div class="form-outline mb-4">
+        👤<label class="form-label" for="form2Example1">Name</label>
+        <input type="text" id="form2Example1" class="form-control" name="Name" required="" autofocus />
+    </div>
+
+    <div class="form-outline mb-4">
+        👤<label class="form-label" for="form2Example1">Surname</label>
+        <input type="text" id="form2Example1" class="form-control" name="Surname" required="" autofocus />
+
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        📧<label class="form-label" for="form2Example1">Email address</label>
+        <input type="email" id="form2Example1" class="form-control" name="Email" required="" autofocus />
+
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        🔑<label class="form-label" for="form2Example2">Password</label>
+        <input type="password" id="form2Example2" class="form-control" name="Password" required="" autofocus />
+
+    </div>
+    <div class="form-outline mb-4">
+        🔑<label class="form-label" for="form2Example2">Confirm Password</label>
+        <input type="password" id="form2Example2" class="form-control" name="ConfirmPassword" required="" autofocus />
+
+    </div>
+    <button class="btnR" type="submit">Register</button>
+    <p> Alredy have an account? <a asp-area="" asp-controller="Login" asp-action="Login">Login</a></p>
+</form>
+

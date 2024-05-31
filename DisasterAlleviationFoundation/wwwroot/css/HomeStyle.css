@@ -1,0 +1,86 @@
+﻿.bg {
+    background-color: rgb(255, 99, 71);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(5px);
+}
+.b {
+    background-image: linear-gradient(to bottom right, #864BA2, #BF3A30);
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.DisasterHead {
+    
+}
+
+form {
+    width: 350PX;
+    /**/
+}
+
+form input {
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: none;
+    display: block;
+    
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 14px;
+    color: #4A4A4A;
+    text-indent: 12px;
+}
+
+form textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+
+form textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+     .btnL {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 auto;
+        padding: 0.9rem 2.5rem;
+        text-align: center;
+        background-color: #864BA2;
+        color: #fff;
+        border-radius: 4px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+        font-size: 17px;
+    }
+
+
+.animHead {
+    font-family: Arial;
+    font-size: 150px;
+    animation: fadeIn 15s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

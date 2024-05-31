@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@@using DisasterAlleviationFoundation.Models;
+@model IEnumerable<AllocateMonetary>
+
+@{
+    ViewData["Title"] = "View Allocated Monetary Data";
+    Layout = "~/Views/Shared/_AllocationLayout.cshtml";
+
+}
+
+<div id="bg"></div>
+<div class="b">
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="MonetaryAllocation">|Monetary Allocation </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="GoodsAllocation">|Goods Allocation</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="CapturePurchasedGoods">|Capture Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedMonetaryData">|<span style="color:orange">Allocated Monetary</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedGoodsData">|Allocated Goods</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewPurchasedGoods">|View Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">|Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 class="animHead">View all Allocation data</h2> <br />
+    <center>
+        <h4>@ViewData["AllocatedAmount"]</h4>
+
+        <h2>Allocated Monetary Donation</h2>
+        @{int i = 1;}
+        <table border="0" cellspacing="1" cellpadding="2" class="table table-hover table-striped" style="color:white">
+            <tr style="color:orange">
+                <th scope="col">#</th>
+                <th scope="col">DisasterID</th>
+                <th scope="col">Location</th>
+                <th scope="col">Description</th>
+                <th scope="col">AllocationDate</th>
+                <th scope="col">Amount</th>
+
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.DisasterID</td>
+                    <td>@item.Description</td>
+                    <td>@item.Description</td>
+                    <td>@item.AllocationDate</td>
+                    <td>R @item.Amount</td>
+
+                </tr>
+            }
+        </table>
+    </center>
+
+
+</div>

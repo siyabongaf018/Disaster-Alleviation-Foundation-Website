@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model DisasterAlleviationFoundation.Models.UserDetails
+@{
+    ViewData["Title"] = "Goods Allocation"; 
+    Layout = "~/Views/Shared/_AllocationLayout.cshtml";
+}
+
+
+
+<div id="bg"></div>
+<div class="b">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="MonetaryAllocation">|Monetary Allocation </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="GoodsAllocation">|<span style="color:orange">Goods Allocation</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="CapturePurchasedGoods">|Capture Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedMonetaryData">|Allocated Monetary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewAllocatedGoodsData">|Allocated Goods</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminAllocation" asp-action="ViewPurchasedGoods">|View Purchased Goods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">|Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <h3 class="">Active Disaster Allocation</h3>
+        <hr />
+        <br />
+        <h3>Goods Allocation</h3>
+        <form asp-action="GoodsAllocationValidation" method="post" class="fm">
+
+
+            <div class="form-outline mb-4">
+                <label class="form-label">Select Active Disaster</label>
+                @*ViewBag.CityList is holding all the cities values*@
+                @Html.DropDownListFor(model => model.selectededCategory, ViewBag.ActiveDisaster as SelectList, "Select Active Disaster", new { @class = "form-control", @onChange = "SelectedValue(this)" })
+                @Html.ValidationMessageFor(model => model.selectededCategory, "", new { @class = "text-danger" })
+                <input type="hidden" name="ActiveDisasterID" class="form-control" id="ActiveDisasterID" />
+            </div>
+
+
+            <div class="form-outline mb-4">
+                <label class="form-label">Select Items To Allocate</label>
+                @*ViewBag.CityList is holding all the cities values*@
+                @Html.DropDownListFor(model => model.selectededItem, ViewBag.Goods as SelectList, "Select Items to allocate", new { @class = "form-control", @onChange = "v2(this)", @id = "jj" })
+                @Html.ValidationMessageFor(model => model.selectededItem, "", new { @class = "text-danger" })
+                <input type="hidden" name="Items"  onchange="document.getElementById('NumberOfItemsLimit').max=this.value;" class="form-control" id="Items" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label">Number of items allocated</label>
+                @*<input type="number" name="Items" onchange="document.getElementById('NumberOfItemsLimit').max=this.value;" class="form-control" id="Items2" />*@
+
+                <input type="number" step="1" id="NumberOfItemsLimit" name="NumberOfItems" min="1"  class="form-control" required="" autofocus />
+
+            </div>
+            <div class="form-outline mb-4">
+                📆<label class="form-label">Allocation date</label>
+                <input type="date" name="AllocationDate" class="form-control" required="" autofocus />
+            </div>
+
+
+
+
+            <button class="btnL" type="submit">Submit</button>
+
+        </form>
+    </center>
+
+
+
+</div>
+
+
+
+<script>
+
+    //To get selected value an text of dropdownlist
+    function SelectedValue(ddlObject) {
+        //Selected value of dropdownlist
+        var selectedValue = ddlObject.value;
+        //Selected text of dropdownlist
+        var selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;
+
+        document.getElementById("ActiveDisasterID").value = selectedValue;
+
+       // var index = ddlObject.selectedIndex;
+        //alert popup with detail of seleceted value and text
+       // alert(" Selected index: " + index + " -- " + "Selected Text: " + selectedText);
+    }
+    var limit = 1;
+    function v2(ddlObject2) {
+        //Selected value of dropdownlist
+        var selectedValue = ddlObject2.value;
+        //Selected text of dropdownlist
+        var selectedText = ddlObject2.options[ddlObject2.selectedIndex].innerHTML;
+
+        document.getElementById("Items").value = selectedValue;
+      //  document.getElementById("Items2").value = selectedValue;
+        
+        var index = ddlObject2.selectedIndex -1;
+        
+       // ViewBag.GoodsQuantity
+        var array = @Html.Raw(Json.Serialize(ViewBag.GoodsQuantity));
+        limit = array[index];
+        //alert popup with detail of seleceted value and text
+      //  alert(" Selected Value: " + array[index] + " -- " + "Selected Text: " + selectedText);
+        document.getElementById('NumberOfItemsLimit').max = limit;
+    }
+
+    
+
+</script>

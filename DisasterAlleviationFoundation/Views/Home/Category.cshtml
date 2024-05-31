@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Category";
+}
+<div id="bg"></div>
+<div class="b">
+    <center>
+        <h3 class="DisasterHeader">Add Category</h3>
+        <hr />
+        <br />
+        <h3>Add Category for goods donation</h3>
+        <form  asp-action="CategoryValidation" method="post" class="fm">
+
+
+            <div class="form-outline mb-4">
+                📦<label class="form-label">Category name</label>
+                <input type="text" name="CategoryName" class="form-control" required="" autofocus />
+            </div>
+            <br />
+            <button class="btnL" type="submit">Submit</button>
+
+        </form>
+    </center>
+
+
+</div>
